@@ -46,3 +46,19 @@ func TestFindLCA_nil (t *testing.T) {
 		t.Errorf("LCA with Nil nodes should return Nil")
 	}
 }
+func TestNotInTree (t *testing.T) {
+	var node7 = createNode(7, nil)
+	var node6 = createNode(6, nil)
+	var node5 = createNode(5, nil)
+	var node4 = createNode(4, nil)
+	var node3 = createNode(3, nil)
+	var node2 = createNode(2, []*Node{node5, node6})
+	var node1 = createNode(1, []*Node{node3, node4})
+	var root = createNode(0, []*Node{node1, node2})
+
+	var LCA, _ = findLCA(root, node5, node7)
+	if LCA != nil {
+		t.Errorf("The LCA should ne Nil as 7 is not in the tree")
+	}
+
+}
